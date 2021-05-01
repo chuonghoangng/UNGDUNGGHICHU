@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:padding="10dp"
+    android:background="#E1B0EA"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textghichuEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cập nhật ghi chú"
+        android:textColor="#BF1D1D"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:textStyle="bold"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edittieudeEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="24dp"
+        android:hint="Nhap tieu de"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textghichuEdit" />
+
+    <EditText
+        android:id="@+id/editnoidungEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="20dp"
+        android:hint="Nhap noi dung"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edittieudeEdit" />
+
+    <Button
+        android:id="@+id/buttoSaveEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="88dp"
+
+        android:layout_marginLeft="88dp"
+        android:layout_marginTop="20dp"
+        android:text="Luu"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editnoidungEdit" />
+
+    <Button
+        android:id="@+id/buttonExitEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="20dp"
+        android:text="Huy"
+        app:layout_constraintStart_toEndOf="@+id/buttoSaveEdit"
+        app:layout_constraintTop_toBottomOf="@+id/editnoidungEdit" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
