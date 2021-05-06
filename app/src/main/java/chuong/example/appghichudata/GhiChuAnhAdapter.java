@@ -42,7 +42,7 @@ public class GhiChuAnhAdapter extends BaseAdapter {
     }
     private class  ViewHolder{
         TextView txtTieude,txtNoidung,txtNgaynhap;
-        ImageView imgUpdate,imgDelete,imgHinh;
+        //ImageView imgUpdate,imgDelete,imgHinh;
     }
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -55,8 +55,8 @@ public class GhiChuAnhAdapter extends BaseAdapter {
             holder.txtTieude = (TextView) convertView.findViewById(R.id.Tieude2);
             holder.txtNoidung= (TextView) convertView.findViewById(R.id.noidung2);
             holder.txtNgaynhap = (TextView) convertView.findViewById(R.id.Ngaynhap2);
-            holder.imgDelete = (ImageView) convertView.findViewById(R.id.Xoa2);
-            holder.imgUpdate = (ImageView) convertView.findViewById(R.id.Capnhat2);
+            //holder.imgDelete = (ImageView) convertView.findViewById(R.id.Xoa2);
+            //holder.imgUpdate = (ImageView) convertView.findViewById(R.id.Capnhat2);
             //holder.imgHinh = (ImageView) convertView.findViewById(R.id.imageAnh2);
             convertView.setTag(holder);
         }else {

@@ -22,14 +22,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ListView
-        android:layout_marginTop="90dp"
-        android:id="@+id/listviewghichu"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="31dp"
-        tools:layout_editor_absoluteY="71dp"
-        android:layout_marginBottom="600dp"/>
 
     <ListView
         android:id="@+id/listviewghichu2"

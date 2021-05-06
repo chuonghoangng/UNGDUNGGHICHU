@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="Cai dat thoi gian nhac nho"
+        android:text="Cai Dat Thoi Gian"
         android:textColor="#ED1515"
         android:textSize="30dp"
 
@@ -29,6 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="62dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button

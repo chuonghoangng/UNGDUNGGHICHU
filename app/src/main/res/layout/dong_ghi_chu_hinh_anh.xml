@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/anhlayout2"
+    android:background="#56E146"
     android:padding="10dp"
     android:layout_height="match_parent">
 
@@ -49,29 +49,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/noidung2" />
 
-    <ImageView
-        android:id="@+id/Capnhat2"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="7dp"
-        android:background="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.617"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Ngaynhap2" />
 
-    <ImageView
-        android:id="@+id/Xoa2"
-        android:layout_width="40dp"
 
-        android:layout_height="40dp"
-        android:layout_marginTop="7dp"
 
-        android:background="#CDDC39"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.824"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Ngaynhap2" />
 
 
 
