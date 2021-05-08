@@ -1,13 +1,16 @@
 package chuong.example.appghichudata;
 
+import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.Menu;
@@ -29,9 +32,8 @@ import java.util.Date;
 public class MainActivity extends AppCompatActivity {
     //khai bao
     Button btnThemAnh;
-    Database database;
     public static Database databaseUpdate;
-
+    ConstraintLayout constraintLayout;
     ListView lvGhiChuAnh;
 
     public ArrayList<GhiChuAnh> arrayGhiChuAnh;
@@ -43,10 +45,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //AnhXa();
-
 
         //AnhXaAnh()
+        constraintLayout=(ConstraintLayout) findViewById(R.id.menumanghinh);
+
         lvGhiChuAnh = (ListView) findViewById(R.id.listviewghichu2);
         btnThemAnh= (Button) findViewById(R.id.buttonThemAnh);
         // thêm ảnh tren form moi
@@ -149,5 +151,65 @@ public class MainActivity extends AppCompatActivity {
         });
         dialog_xoa.show();
     }
+
+    //cài đặt menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //lay layout tu add_ghichu
+        getMenuInflater().inflate(R.menu.add_ghichu,menu);
+        //tra ve
+        return super.onCreateOptionsMenu(menu);
+    }
+    // Xét sự kiện
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId()==R.id.menuAdd)
+        {
+            Intent i= new Intent(MainActivity.this,ThemAnhGhiChuActivity.class);
+            i.putExtra("Ma",0);
+            startActivity(i);
+        }
+        else if(item.getItemId()==R.id.menuDeleteAll)
+        {
+            DeleteAll();
+        }
+        else if(item.getItemId()==R.id.menumanghinh)
+        {
+            //constraintLayout.setBackgroundColor(Color.WHITE);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void DeleteAll() {
+        AlertDialog.Builder dialog_xoa = new AlertDialog.Builder(this);
+        dialog_xoa.setMessage("Bạn có muốn xóa tất cả ghi chú hay không ?");
+
+        dialog_xoa.setNegativeButton(" Không ", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        dialog_xoa.setPositiveButton(" Có ", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                databaseUpdate.QueryData("DELETE FROM GhiChu2 ");
+                Toast.makeText(MainActivity.this,"Đã xóa ",Toast.LENGTH_SHORT);
+                GetDataGhiChuAnh();
+            }
+        });
+        dialog_xoa.show();
+    }
+    private  void DialogMaunen(){
+        Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_settingcolor);
+
+
+        //show dialog
+        dialog.show();
+
+    }
+
 
 }

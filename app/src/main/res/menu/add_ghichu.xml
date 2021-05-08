@@ -3,9 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/menuAdd"
-        android:icon="@android:drawable/ic_menu_add"
-        app:showAsAction="always"
-        android:title="Them"
+        android:title="Thêm ghi chú"
+        />
+    <item
+        android:id="@+id/menuDeleteAll"
+        android:title="Xóa tất cả ghi chú"
+        />
+    <item
+        android:id="@+id/menuSettingcolor"
+        android:title="Cài đặt màu nền"
         />
 
 </menu>
