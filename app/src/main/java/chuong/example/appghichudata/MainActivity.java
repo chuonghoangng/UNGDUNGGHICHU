@@ -235,50 +235,53 @@ public class MainActivity extends AppCompatActivity {
         img1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                constraintLayout.setBackgroundColor(Color.RED);
-
-
+                //constraintLayout.setBackgroundColor(Color.RED);
+                constraintLayout.setBackgroundResource(R.drawable.maudo);
             }
         });
         img2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //constraintLayout.setBackgroundColor(Color.);
+                constraintLayout.setBackgroundResource(R.drawable.maucam);
             }
         });
         img3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                constraintLayout.setBackgroundColor(Color.YELLOW);
+                //constraintLayout.setBackgroundColor(Color.YELLOW);
+                constraintLayout.setBackgroundResource(R.drawable.mauvang);
+
 
             }
         });
         img4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                constraintLayout.setBackgroundColor(Color.GREEN);
+                //constraintLayout.setBackgroundColor(Color.GREEN);
+                constraintLayout.setBackgroundResource(R.drawable.mauluc);
+
 
             }
         });
         img5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                constraintLayout.setBackgroundColor(Color.BLUE);
+                //constraintLayout.setBackgroundColor(Color.BLUE);
+                constraintLayout.setBackgroundResource(R.drawable.maulam);
 
             }
         });
         img6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
+                constraintLayout.setBackgroundResource(R.drawable.mautim);
             }
         });
         img7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 constraintLayout.setBackgroundColor(Color.WHITE);
-
             }
         });
     }
