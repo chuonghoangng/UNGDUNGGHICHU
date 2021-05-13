@@ -7,6 +7,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.ContentProviderClient;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -20,6 +21,8 @@ import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,13 +35,17 @@ import java.util.Date;
 public class MainActivity extends AppCompatActivity {
     //khai bao
     Button btnThemAnh;
+    //khai bao cho dialog color
+    TextView color;
+    ImageButton img1,img2,img3,img4,img5,img6,img7;
+    //khai báo cho database
     public static Database databaseUpdate;
+    //khai báo cho constrainLayout Main
     ConstraintLayout constraintLayout;
+    //khai báo danh sách
     ListView lvGhiChuAnh;
-
+    //khai báo cho danh sách class
     public ArrayList<GhiChuAnh> arrayGhiChuAnh;
-
-
     GhiChuAnhAdapter adapterAnh;
 
     @Override
@@ -48,10 +55,9 @@ public class MainActivity extends AppCompatActivity {
 
         //AnhXaAnh()
         constraintLayout=(ConstraintLayout) findViewById(R.id.menumanghinh);
-
         lvGhiChuAnh = (ListView) findViewById(R.id.listviewghichu2);
         btnThemAnh= (Button) findViewById(R.id.buttonThemAnh);
-        // thêm ảnh tren form moi
+        // xử lí sự kiện thêm ảnh tren form moi
         btnThemAnh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,15 +84,17 @@ public class MainActivity extends AppCompatActivity {
 
         //insert database
         //database.QueryData("INSERT INTO CongViec VALUES(null,'The thao','toan, ly, hoa','12/04/2013')");
-        //xuat danh sach
 
+        //xuat danh sach
         GetDataGhiChuAnh();
+        //chọn để cập nhật
         lvGhiChuAnh.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 showthemhinhanh(position);
             }
         });
+        //xóa ghi chú khỏi danh sách
         lvGhiChuAnh.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
@@ -160,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
         //tra ve
         return super.onCreateOptionsMenu(menu);
     }
-    // Xét sự kiện
+    // Xét sự kiện menu
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId()==R.id.menuAdd)
@@ -175,6 +183,8 @@ public class MainActivity extends AppCompatActivity {
         }
         else if(item.getItemId()==R.id.menumanghinh)
         {
+            DialogMaunen();
+            //constraintLayout.setBackgroundColor(Color.WHITE);
             //constraintLayout.setBackgroundColor(Color.WHITE);
         }
         return super.onOptionsItemSelected(item);
@@ -203,12 +213,74 @@ public class MainActivity extends AppCompatActivity {
     private  void DialogMaunen(){
         Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.dialog_settingcolor);
+        dialog.setContentView(R.layout.dialog_setting_color);
+        //Anh xa
 
-
+        color = (TextView) dialog.findViewById(R.id.COLOR);
+        img1 =(ImageButton) dialog.findViewById(R.id.imageButton1);
+        img2 =(ImageButton) dialog.findViewById(R.id.imageButton2);
+        img3 =(ImageButton) dialog.findViewById(R.id.imageButton3);
+        img4 =(ImageButton) dialog.findViewById(R.id.imageButton4);
+        img5 =(ImageButton) dialog.findViewById(R.id.imageButton5);
+        img6 =(ImageButton) dialog.findViewById(R.id.imageButton6);
+        img7 =(ImageButton) dialog.findViewById(R.id.imageButton7);
+        //sử lý sự kiện
+        ClickColor();
         //show dialog
         dialog.show();
 
+    }
+
+    private void ClickColor() {
+        img1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                constraintLayout.setBackgroundColor(Color.RED);
+
+
+            }
+        });
+        img2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //constraintLayout.setBackgroundColor(Color.);
+            }
+        });
+        img3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                constraintLayout.setBackgroundColor(Color.YELLOW);
+
+            }
+        });
+        img4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                constraintLayout.setBackgroundColor(Color.GREEN);
+
+            }
+        });
+        img5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                constraintLayout.setBackgroundColor(Color.BLUE);
+
+            }
+        });
+        img6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+            }
+        });
+        img7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                constraintLayout.setBackgroundColor(Color.WHITE);
+
+            }
+        });
     }
 
 
