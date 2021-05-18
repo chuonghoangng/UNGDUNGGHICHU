@@ -2,6 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:padding="10dp"
+    android:background="@color/teal_200"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -27,8 +29,8 @@
     <ImageButton
         android:background="#E8FD3D2E"
         android:id="@+id/imageButton1"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="90dp"
@@ -38,8 +40,8 @@
     <ImageButton
 
         android:id="@+id/imageButton2"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginStart="5dp"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="90dp"
@@ -49,8 +51,8 @@
 
     <ImageButton
         android:background="#FFEB3B"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:id="@+id/imageButton3"
         android:layout_marginStart="5dp"
         android:layout_marginLeft="5dp"
@@ -59,8 +61,8 @@
         app:layout_constraintTop_toTopOf="parent" />
     <ImageButton
         android:background="#CDDC39"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:id="@+id/imageButton4"
         android:layout_marginStart="5dp"
         android:layout_marginLeft="5dp"
@@ -69,8 +71,8 @@
         app:layout_constraintTop_toTopOf="parent" />
     <ImageButton
         android:background="#A2DAF3"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:id="@+id/imageButton5"
         android:layout_marginStart="5dp"
         android:layout_marginLeft="5dp"
@@ -79,8 +81,8 @@
         app:layout_constraintTop_toTopOf="parent" />
     <ImageButton
         android:background="@color/purple_200"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:id="@+id/imageButton6"
         android:layout_marginStart="5dp"
         android:layout_marginLeft="5dp"
@@ -89,13 +91,23 @@
         app:layout_constraintTop_toTopOf="parent" />
     <ImageButton
         android:background="@color/white"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:id="@+id/imageButton7"
         android:layout_marginStart="5dp"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="90dp"
         app:layout_constraintStart_toEndOf="@+id/imageButton6"
+        app:layout_constraintTop_toTopOf="parent" />
+    <ImageButton
+        android:background="@drawable/anhnendaimau"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:id="@+id/imageButton8"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="90dp"
+        app:layout_constraintStart_toEndOf="@+id/imageButton7"
         app:layout_constraintTop_toTopOf="parent" />
 
 

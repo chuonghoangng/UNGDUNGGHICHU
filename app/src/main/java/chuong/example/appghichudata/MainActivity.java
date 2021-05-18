@@ -10,6 +10,7 @@ import android.app.Dialog;
 import android.content.ContentProviderClient;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnThemAnh;
     //khai bao cho dialog color
     TextView color;
-    ImageButton img1,img2,img3,img4,img5,img6,img7;
+    ImageButton img1,img2,img3,img4,img5,img6,img7,img8;
     //khai báo cho database
     public static Database databaseUpdate;
     //khai báo cho constrainLayout Main
@@ -47,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
     //khai báo cho danh sách class
     public ArrayList<GhiChuAnh> arrayGhiChuAnh;
     GhiChuAnhAdapter adapterAnh;
+    int d;
+    SharedPreferences luutrangthai;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +60,29 @@ public class MainActivity extends AppCompatActivity {
         constraintLayout=(ConstraintLayout) findViewById(R.id.menumanghinh);
         lvGhiChuAnh = (ListView) findViewById(R.id.listviewghichu2);
         btnThemAnh= (Button) findViewById(R.id.buttonThemAnh);
+        //
+        luutrangthai = getSharedPreferences("Trangthai",MODE_PRIVATE);
         // xử lí sự kiện thêm ảnh tren form moi
+        d=luutrangthai.getInt("ma",0);
+        // mau nen mac dinh
+        if(d==0){
+            constraintLayout.setBackgroundResource(R.drawable.anhnendaimau);
+        } else if(d==1){
+            constraintLayout.setBackgroundResource(R.drawable.maudo);
+        }else if(d==2){
+            constraintLayout.setBackgroundResource(R.drawable.maucam);
+        }else if(d==3){
+            constraintLayout.setBackgroundResource(R.drawable.mauvang);
+        }else if(d==4){
+            constraintLayout.setBackgroundResource(R.drawable.mauluc);
+        }else if(d==5){
+            constraintLayout.setBackgroundResource(R.drawable.maulam);
+        }else if(d==6){
+            constraintLayout.setBackgroundResource(R.drawable.mautim);
+        }else if(d==7){
+            constraintLayout.setBackgroundColor(Color.WHITE);
+        }
+
         btnThemAnh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,6 +127,12 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
+    private void luuTrangThai(){
+        SharedPreferences.Editor editor = luutrangthai.edit();
+        editor.putInt("ma",d);
+        editor.commit();
+
     }
     public  void XoaGhiChuAnh(int position)
     {
@@ -181,7 +212,7 @@ public class MainActivity extends AppCompatActivity {
         {
             DeleteAll();
         }
-        else if(item.getItemId()==R.id.menumanghinh)
+        else
         {
             DialogMaunen();
             //constraintLayout.setBackgroundColor(Color.WHITE);
@@ -189,7 +220,7 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
+    // XOA TAT CA GHI CHU
     private void DeleteAll() {
         AlertDialog.Builder dialog_xoa = new AlertDialog.Builder(this);
         dialog_xoa.setMessage("Bạn có muốn xóa tất cả ghi chú hay không ?");
@@ -224,10 +255,13 @@ public class MainActivity extends AppCompatActivity {
         img5 =(ImageButton) dialog.findViewById(R.id.imageButton5);
         img6 =(ImageButton) dialog.findViewById(R.id.imageButton6);
         img7 =(ImageButton) dialog.findViewById(R.id.imageButton7);
+        img8 =(ImageButton) dialog.findViewById(R.id.imageButton8);
+
         //sử lý sự kiện
         ClickColor();
         //show dialog
         dialog.show();
+
 
     }
 
@@ -237,6 +271,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //constraintLayout.setBackgroundColor(Color.RED);
                 constraintLayout.setBackgroundResource(R.drawable.maudo);
+                d=1;
+                luuTrangThai();
             }
         });
         img2.setOnClickListener(new View.OnClickListener() {
@@ -244,6 +280,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //constraintLayout.setBackgroundColor(Color.);
                 constraintLayout.setBackgroundResource(R.drawable.maucam);
+                d=2;
+                luuTrangThai();
             }
         });
         img3.setOnClickListener(new View.OnClickListener() {
@@ -251,7 +289,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //constraintLayout.setBackgroundColor(Color.YELLOW);
                 constraintLayout.setBackgroundResource(R.drawable.mauvang);
-
+                d=3;
+                luuTrangThai();
 
             }
         });
@@ -260,7 +299,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //constraintLayout.setBackgroundColor(Color.GREEN);
                 constraintLayout.setBackgroundResource(R.drawable.mauluc);
-
+                d=4;
+                luuTrangThai();
 
             }
         });
@@ -269,19 +309,33 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //constraintLayout.setBackgroundColor(Color.BLUE);
                 constraintLayout.setBackgroundResource(R.drawable.maulam);
-
+                d=5;
+                luuTrangThai();
             }
         });
         img6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 constraintLayout.setBackgroundResource(R.drawable.mautim);
+                d=6;
+                luuTrangThai();
             }
         });
         img7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 constraintLayout.setBackgroundColor(Color.WHITE);
+                d=7;
+                luuTrangThai();
+            }
+        });
+        img8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                constraintLayout.setBackgroundResource(R.drawable.anhnendaimau);
+                d=0;
+                luuTrangThai();
             }
         });
     }
