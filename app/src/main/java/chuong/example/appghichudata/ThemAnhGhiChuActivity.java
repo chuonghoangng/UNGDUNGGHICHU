@@ -120,21 +120,41 @@ public class ThemAnhGhiChuActivity extends AppCompatActivity {
                     byte[] hinhanh = byteArray.toByteArray();
 
                 if(maCN==0){
-                    MainActivity.databaseUpdate.INSERT_PICTER(
-                            edttieude.getText().toString().trim(),
-                            edtnoidung.getText().toString().trim(),
-                            ngaynhap,
-                            hinhanh
-                    );
+                    if (edttieude.equals("")||edtnoidung.equals(""))
+                    {
+                        //thong bao khi nhap khong day du
+                        Toast.makeText(ThemAnhGhiChuActivity.this,"Vui lòng nhập thông tin đầy đủ",Toast.LENGTH_SHORT).show();
+                    }
+
+                    else{
+                        //insert database
+                        MainActivity.databaseUpdate.INSERT_PICTER(
+                                edttieude.getText().toString().trim(),
+                                edtnoidung.getText().toString().trim(),
+                                ngaynhap,
+                                hinhanh
+                        );
+
+                    }
+
                 }else {
-                    MainActivity.databaseUpdate.UPDATE_PICTER(
-                            getIntent().getIntExtra("Id", 1234),
-                            edttieude.getText().toString().trim(),
-                            edtnoidung.getText().toString().trim(),
-                            ngaynhap,
-                            hinhanh);
+                    if (edttieude.equals("")||edtnoidung.equals(""))
+                    {
+                        //thong bao khi nhap khong day du
+                        Toast.makeText(ThemAnhGhiChuActivity.this,"Vui lòng nhập thông tin đầy đủ",Toast.LENGTH_SHORT).show();
+                    }
+
+                    else{
+                        MainActivity.databaseUpdate.UPDATE_PICTER(
+                                getIntent().getIntExtra("Id", 1234),
+                                edttieude.getText().toString().trim(),
+                                edtnoidung.getText().toString().trim(),
+                                ngaynhap,
+                                hinhanh);
+                    }
+
                 }
-                Toast.makeText(ThemAnhGhiChuActivity.this,"Cap nhat ghi chu thanh cong",Toast.LENGTH_SHORT).show();
+                Toast.makeText(ThemAnhGhiChuActivity.this,"Cập nhật ghi chú thành công",Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(ThemAnhGhiChuActivity.this,MainActivity.class));
             }
         });

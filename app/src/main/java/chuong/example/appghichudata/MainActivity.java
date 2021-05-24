@@ -25,6 +25,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
     GhiChuAnhAdapter adapterAnh;
     int d;
     SharedPreferences luutrangthai;
+    SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
         constraintLayout=(ConstraintLayout) findViewById(R.id.menumanghinh);
         lvGhiChuAnh = (ListView) findViewById(R.id.listviewghichu2);
         btnThemAnh= (Button) findViewById(R.id.buttonThemAnh);
+        searchView=(SearchView) findViewById(R.id.search);
         //
         luutrangthai = getSharedPreferences("Trangthai",MODE_PRIVATE);
         // xử lí sự kiện thêm ảnh tren form moi
@@ -101,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
         lvGhiChuAnh.setAdapter(adapterAnh);
 
 
+
         // tao databaseUpdate 2
         databaseUpdate = new Database(this, "ghichu2.sqlite", null, 1);
         //tao bang cong viec cua ghi chu 2
@@ -112,6 +116,23 @@ public class MainActivity extends AppCompatActivity {
 
         //xuat danh sach
         GetDataGhiChuAnh();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+
+                adapterAnh.getFilter().filter(query);
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                //arrayGhiChuAnh.clear();
+                adapterAnh.getFilter().filter(newText);
+
+                return false;
+            }
+        });
         //chọn để cập nhật
         lvGhiChuAnh.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -166,6 +187,7 @@ public class MainActivity extends AppCompatActivity {
                     data.getBlob(4)));
         }
         adapterAnh.notifyDataSetChanged();
+
     }
     // ham tao menu them
 

@@ -24,10 +24,21 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
+    <SearchView
+        android:id="@+id/search"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+
+
+        android:layout_marginTop="72dp"
+        android:iconifiedByDefault="false"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ListView
         android:id="@+id/listviewghichu2"
         android:layout_width="match_parent"
-        android:layout_height="600dp"
+        android:layout_height="500dp"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

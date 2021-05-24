@@ -8,22 +8,30 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
+import android.widget.SearchView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BinaryOperator;
 
-public class GhiChuAnhAdapter extends BaseAdapter {
+public class GhiChuAnhAdapter extends BaseAdapter implements Filterable {
 
     private Context context;
     private int layout;
     public List<GhiChuAnh> ghiChuAnhList;
+    public List<GhiChuAnh> ghiChuAnhList_moi;
+
+
 
     public GhiChuAnhAdapter(MainActivity context, int layout, List<GhiChuAnh> ghiChuAnhList) {
         this.context = context;
         this.layout = layout;
         this.ghiChuAnhList = ghiChuAnhList;
+        this.ghiChuAnhList_moi=ghiChuAnhList;
     }
 
     @Override
@@ -40,6 +48,39 @@ public class GhiChuAnhAdapter extends BaseAdapter {
     public long getItemId(int position) {
         return 0;
     }
+
+    @Override
+    public Filter getFilter() {
+
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                String x= constraint.toString();
+                if(x.isEmpty()){
+                    ghiChuAnhList_moi=ghiChuAnhList;
+                }else{
+                    List<GhiChuAnh> list =new ArrayList<>();
+                    for(GhiChuAnh note : ghiChuAnhList){
+                        if(note.getTieude().toLowerCase().contains(constraint.toString().toLowerCase())){
+                            list.add(note);
+                        }
+                    }
+                    ghiChuAnhList_moi=list;
+                }
+                FilterResults filterResults = new FilterResults();
+                filterResults.values=ghiChuAnhList_moi;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults results) {
+                //ghiChuAnhList_moi.clear();
+                ghiChuAnhList_moi= (List<GhiChuAnh>) results.values;
+                notifyDataSetChanged();
+            }
+        };
+    }
+
     private class  ViewHolder{
         TextView txtTieude,txtNoidung,txtNgaynhap;
         //ImageView imgUpdate,imgDelete,imgHinh;
@@ -75,6 +116,7 @@ public class GhiChuAnhAdapter extends BaseAdapter {
 
         return convertView;
     }
+
 
 
 }
