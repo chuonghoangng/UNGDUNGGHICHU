@@ -4,15 +4,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:padding="10dp"
-    android:background="#E1B0EA"
+    android:padding="15dp"
+    android:background="@color/teal_200"
     android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/textghichuEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Cập nhật ghi chú"
+        android:text="Đổi mật khẩu"
         android:textColor="#BF1D1D"
         android:textSize="30dp"
         android:gravity="center"
@@ -22,50 +22,70 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/edittieudeEdit"
+        android:id="@+id/editmatkhaucu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="24dp"
-        android:hint="Nhap tieu de"
+        android:hint="Nhap mật khẩu cũ"
+        android:ems="10"
+        android:inputType="textPassword"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textghichuEdit" />
 
     <EditText
-        android:id="@+id/editnoidungEdit"
+        android:id="@+id/editmatkhaumoi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="20dp"
+        android:hint="Nhập mật khẩu mới"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editmatkhaucu" />
+    <EditText
+        android:ems="10"
+        android:inputType="textPassword"
+        android:id="@+id/editnhaplai"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="20dp"
-        android:hint="Nhap noi dung"
+        android:hint="Nhập lại mật khẩu mới"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edittieudeEdit" />
+        app:layout_constraintTop_toBottomOf="@+id/editmatkhaumoi" />
 
     <Button
+        android:textSize="10dp"
         android:id="@+id/buttoSaveEdit"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="88dp"
 
-        android:layout_marginLeft="88dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
         android:layout_marginTop="20dp"
-        android:text="Luu"
+        android:text="Xác nhận"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editnoidungEdit" />
+        app:layout_constraintTop_toBottomOf="@+id/editnhaplai" />
 
     <Button
         android:id="@+id/buttonExitEdit"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginLeft="48dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
         android:layout_marginTop="20dp"
-        android:text="Huy"
+        android:text="Hủy"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.045"
         app:layout_constraintStart_toEndOf="@+id/buttoSaveEdit"
-        app:layout_constraintTop_toBottomOf="@+id/editnoidungEdit" />
+        app:layout_constraintTop_toBottomOf="@+id/editnhaplai" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

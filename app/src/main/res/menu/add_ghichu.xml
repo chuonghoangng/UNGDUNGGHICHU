@@ -13,5 +13,13 @@
         android:id="@+id/menuSettingcolor"
         android:title="Cài đặt màu nền"
         />
+    <item
+        android:id="@+id/menuChangePass"
+        android:title="Đổi mật khẩu"
+        ></item>
+    <item
+        android:id="@+id/menudangxuat"
+        android:title="Đăng xuất"
+        />
 
 </menu>

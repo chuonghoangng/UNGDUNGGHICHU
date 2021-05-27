@@ -107,16 +107,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButtonfileFoder2" />
 
-    <ImageButton
 
-        android:id="@+id/imagealarn"
-        android:layout_width="60sp"
-        android:layout_height="60sp"
-        android:layout_marginStart="35dp"
-        android:layout_marginLeft="35dp"
-        android:layout_marginTop="15dp"
-        android:src="@android:drawable/btn_star_big_on"
-        app:layout_constraintStart_toEndOf="@+id/imageButtonCamera2"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewAnh2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -36,7 +36,7 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
     //khai bao
-    Button btnThemAnh;
+    //Button btnThemAnh;
     //khai bao cho dialog color
     TextView color;
     ImageButton img1,img2,img3,img4,img5,img6,img7,img8;
@@ -51,7 +51,8 @@ public class MainActivity extends AppCompatActivity {
     GhiChuAnhAdapter adapterAnh;
     int d;
     SharedPreferences luutrangthai;
-    SearchView searchView;
+    TextView txttieude,txtnoidung;
+    //SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,8 +62,12 @@ public class MainActivity extends AppCompatActivity {
         //AnhXaAnh()
         constraintLayout=(ConstraintLayout) findViewById(R.id.menumanghinh);
         lvGhiChuAnh = (ListView) findViewById(R.id.listviewghichu2);
-        btnThemAnh= (Button) findViewById(R.id.buttonThemAnh);
-        searchView=(SearchView) findViewById(R.id.search);
+        //txttieude = (TextView) findViewById(R.id.Tieude2);
+        //txtnoidung =(TextView) findViewById(R.id.noidung2);
+        String nhan_mk =getIntent().getStringExtra("Pass");
+
+        //btnThemAnh= (Button) findViewById(R.id.buttonThemAnh);
+        //searchView=(SearchView) findViewById(R.id.search);
         //
         luutrangthai = getSharedPreferences("Trangthai",MODE_PRIVATE);
         // xử lí sự kiện thêm ảnh tren form moi
@@ -74,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
             constraintLayout.setBackgroundResource(R.drawable.maudo);
         }else if(d==2){
             constraintLayout.setBackgroundResource(R.drawable.maucam);
+            //holde.setTextColor(Color.BLACK);
         }else if(d==3){
             constraintLayout.setBackgroundResource(R.drawable.mauvang);
         }else if(d==4){
@@ -86,15 +92,7 @@ public class MainActivity extends AppCompatActivity {
             constraintLayout.setBackgroundColor(Color.WHITE);
         }
 
-        btnThemAnh.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //startActivity(new Intent(MainActivity.this,ThemAnhGhiChuActivity.class));
-                Intent i= new Intent(MainActivity.this,ThemAnhGhiChuActivity.class);
-                i.putExtra("Ma",0);
-                startActivity(i);
-            }
-        });
+
 
         //tao Arraylist Anh
         //tao arraylist
@@ -116,23 +114,7 @@ public class MainActivity extends AppCompatActivity {
 
         //xuat danh sach
         GetDataGhiChuAnh();
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
 
-                adapterAnh.getFilter().filter(query);
-
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                //arrayGhiChuAnh.clear();
-                adapterAnh.getFilter().filter(newText);
-
-                return false;
-            }
-        });
         //chọn để cập nhật
         lvGhiChuAnh.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -234,6 +216,16 @@ public class MainActivity extends AppCompatActivity {
         {
             DeleteAll();
         }
+        else if(item.getItemId()==R.id.menuChangePass)
+        {
+            DialogPass();
+        }
+        else if(item.getItemId()==R.id.menudangxuat)
+        {
+            Intent i= new Intent(MainActivity.this,manghinhdangnhap.class);
+
+            startActivity(i);
+        }
         else
         {
             DialogMaunen();
@@ -241,6 +233,13 @@ public class MainActivity extends AppCompatActivity {
             //constraintLayout.setBackgroundColor(Color.WHITE);
         }
         return super.onOptionsItemSelected(item);
+    }
+    private  void DialogPass() {
+        Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_sua_ghichu);
+
+        dialog.show();
     }
     // XOA TAT CA GHI CHU
     private void DeleteAll() {

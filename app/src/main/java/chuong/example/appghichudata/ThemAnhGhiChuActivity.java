@@ -34,7 +34,7 @@ import java.util.Date;
 public class ThemAnhGhiChuActivity extends AppCompatActivity {
 
     Button btnadd,btnhuy;
-    ImageButton imgcamera,imgfolder,imgalarm;
+    ImageButton imgcamera,imgfolder;
     EditText edttieude,edtnoidung;
     ImageView imghinh2;
     final int REQUEST_CODE_CAMERA = 123;
@@ -118,9 +118,11 @@ public class ThemAnhGhiChuActivity extends AppCompatActivity {
                     ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
                     bitmap.compress(Bitmap.CompressFormat.PNG,100,byteArray);
                     byte[] hinhanh = byteArray.toByteArray();
+                    String tieude = edttieude.getText().toString();
+                    String noidung = edtnoidung.getText().toString();
 
                 if(maCN==0){
-                    if (edttieude.equals("")||edtnoidung.equals(""))
+                    if (tieude.equals("")||noidung.equals(""))
                     {
                         //thong bao khi nhap khong day du
                         Toast.makeText(ThemAnhGhiChuActivity.this,"Vui lòng nhập thông tin đầy đủ",Toast.LENGTH_SHORT).show();
@@ -134,11 +136,13 @@ public class ThemAnhGhiChuActivity extends AppCompatActivity {
                                 ngaynhap,
                                 hinhanh
                         );
+                        Toast.makeText(ThemAnhGhiChuActivity.this,"Cập nhật ghi chú thành công",Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(ThemAnhGhiChuActivity.this,MainActivity.class));
 
                     }
 
                 }else {
-                    if (edttieude.equals("")||edtnoidung.equals(""))
+                    if (tieude.equals("")||noidung.equals(""))
                     {
                         //thong bao khi nhap khong day du
                         Toast.makeText(ThemAnhGhiChuActivity.this,"Vui lòng nhập thông tin đầy đủ",Toast.LENGTH_SHORT).show();
@@ -151,11 +155,13 @@ public class ThemAnhGhiChuActivity extends AppCompatActivity {
                                 edtnoidung.getText().toString().trim(),
                                 ngaynhap,
                                 hinhanh);
+                        Toast.makeText(ThemAnhGhiChuActivity.this,"Cập nhật ghi chú thành công",Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(ThemAnhGhiChuActivity.this,MainActivity.class));
                     }
 
                 }
-                Toast.makeText(ThemAnhGhiChuActivity.this,"Cập nhật ghi chú thành công",Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(ThemAnhGhiChuActivity.this,MainActivity.class));
+                //Toast.makeText(ThemAnhGhiChuActivity.this,"Cập nhật ghi chú thành công",Toast.LENGTH_SHORT).show();
+                //startActivity(new Intent(ThemAnhGhiChuActivity.this,MainActivity.class));
             }
         });
         btnhuy.setOnClickListener(new View.OnClickListener() {
@@ -164,14 +170,7 @@ public class ThemAnhGhiChuActivity extends AppCompatActivity {
                 startActivity(new Intent(ThemAnhGhiChuActivity.this,MainActivity.class));
             }
         });
-        imgalarm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i= new Intent(ThemAnhGhiChuActivity.this,ChucNangNhacNho.class);
-                i.putExtra("Ma",0);
-                startActivity(i);
-            }
-        });
+
 
 
     }
@@ -231,7 +230,7 @@ public class ThemAnhGhiChuActivity extends AppCompatActivity {
         imghinh2 = (ImageView) findViewById(R.id.imageViewAnh2);
         imgcamera =(ImageButton) findViewById(R.id.imageButtonCamera2);
         imgfolder =(ImageButton) findViewById( R.id.imageButtonfileFoder2);
-        imgalarm =(ImageButton) findViewById(R.id.imagealarn);
+        //imgalarm =(ImageButton) findViewById(R.id.imagealarn);
         edttieude=(EditText) findViewById(R.id.editTexttieude2);
         edtnoidung=(EditText) findViewById(R.id.editTextNoidung2);
 
