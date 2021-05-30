@@ -15,7 +15,7 @@
         />
     <item
         android:id="@+id/menuChangePass"
-        android:title="Đổi mật khẩu"
+        android:title="Cài đặt bảo mật"
         ></item>
     <item
         android:id="@+id/menudangxuat"

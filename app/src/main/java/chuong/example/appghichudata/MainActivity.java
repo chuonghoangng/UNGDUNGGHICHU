@@ -53,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences luutrangthai;
     TextView txttieude,txtnoidung;
     //SearchView searchView;
+    public String nhan_mk;
+    public int nhan_chedo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +66,10 @@ public class MainActivity extends AppCompatActivity {
         lvGhiChuAnh = (ListView) findViewById(R.id.listviewghichu2);
         //txttieude = (TextView) findViewById(R.id.Tieude2);
         //txtnoidung =(TextView) findViewById(R.id.noidung2);
-        String nhan_mk =getIntent().getStringExtra("Pass");
+         //nhan_mk =getIntent().getStringExtra("Pass");
+         //nhan_chedo=getIntent().getIntExtra("chedomk",0);
+        nhan_mk=manghinhdangnhap.luuMK.getString("ma","");
+        nhan_chedo = manghinhdangnhap.luuMK.getInt("Chedo",0);
 
         //btnThemAnh= (Button) findViewById(R.id.buttonThemAnh);
         //searchView=(SearchView) findViewById(R.id.search);
@@ -206,10 +211,13 @@ public class MainActivity extends AppCompatActivity {
     // Xét sự kiện menu
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+
         if(item.getItemId()==R.id.menuAdd)
         {
             Intent i= new Intent(MainActivity.this,ThemAnhGhiChuActivity.class);
             i.putExtra("Ma",0);
+
             startActivity(i);
         }
         else if(item.getItemId()==R.id.menuDeleteAll)
@@ -238,6 +246,77 @@ public class MainActivity extends AppCompatActivity {
         Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog_sua_ghichu);
+        TextView txt1 =(TextView) dialog.findViewById(R.id.textghichuEdit);
+        EditText edt1 = (EditText) dialog.findViewById(R.id.editmatkhaucu) ;
+        EditText edt2 = (EditText) dialog.findViewById(R.id.editmatkhaumoi) ;
+        if(nhan_chedo==0)
+        {
+            txt1.setText("Cài đặt mật khẩu");
+            edt2.setVisibility(View.VISIBLE);
+        }else{
+            txt1.setText("Hủy mật khẩu");
+            edt2.setVisibility(View.INVISIBLE);
+        }
+
+
+
+        EditText edt3 = (EditText) dialog.findViewById(R.id.editnhaplai) ;
+        edt3.setVisibility(View.GONE);
+
+        Button btnXacnhan=(Button) dialog.findViewById(R.id.buttonSaveEdit);
+        Button btnHuy=(Button) dialog.findViewById(R.id.buttonExitEdit);
+        btnXacnhan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(nhan_chedo==0)
+                {
+                    String mk_cu=edt1.getText().toString().trim();
+                    String mk_moi=edt2.getText().toString().trim();
+                    //String mk_nhaplai=edt3.getText().toString().trim();
+                    if(mk_cu.equals("") || mk_moi.equals(""))
+                        Toast.makeText(MainActivity.this,"Mời nhập đầy đủ thông tin ",Toast.LENGTH_SHORT).show();
+                    else{
+                        if(mk_cu.equals(mk_moi))
+                        {
+                            manghinhdangnhap.luuMatkhau(mk_moi,1);
+                            nhan_mk=mk_cu.toString();
+                            nhan_chedo=1;
+
+                            dialog.dismiss();
+                        }
+                        else {
+
+                            Toast.makeText(MainActivity.this,"Sai thông tin mời nhập lại ",Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }else if(nhan_chedo==1){
+                    String mk_cu=edt1.getText().toString().trim();
+                    if(nhan_mk.equals(mk_cu))
+                    {
+                        manghinhdangnhap.luuMatkhau(mk_cu,0);
+                        nhan_mk=mk_cu;
+                        nhan_chedo=0;
+                        dialog.dismiss();
+                    }
+                    else
+                    {
+                        Toast.makeText(MainActivity.this,"Mật khẩu xác nhận sai  mời nhập lại ",Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+
+
+
+            }
+        });
+        btnHuy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+
 
         dialog.show();
     }
@@ -256,7 +335,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 databaseUpdate.QueryData("DELETE FROM GhiChu2 ");
-                Toast.makeText(MainActivity.this,"Đã xóa ",Toast.LENGTH_SHORT);
+                Toast.makeText(MainActivity.this,"Đã xóa ",Toast.LENGTH_SHORT).show();
                 GetDataGhiChuAnh();
             }
         });
