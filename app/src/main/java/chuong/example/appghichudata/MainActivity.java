@@ -66,8 +66,8 @@ public class MainActivity extends AppCompatActivity {
         lvGhiChuAnh = (ListView) findViewById(R.id.listviewghichu2);
         //txttieude = (TextView) findViewById(R.id.Tieude2);
         //txtnoidung =(TextView) findViewById(R.id.noidung2);
-         //nhan_mk =getIntent().getStringExtra("Pass");
-         //nhan_chedo=getIntent().getIntExtra("chedomk",0);
+        //nhan_mk =getIntent().getStringExtra("Pass");
+        //nhan_chedo=getIntent().getIntExtra("chedomk",0);
         nhan_mk=manghinhdangnhap.luuMK.getString("ma","");
         nhan_chedo = manghinhdangnhap.luuMK.getInt("Chedo",0);
 
