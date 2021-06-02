@@ -29,7 +29,7 @@ public class manghinhdangnhap extends AppCompatActivity {
 
         //anh xa
         t1= (TextView) findViewById(R.id.dangnhap);
-        t2 = (TextView) findViewById(R.id.thongbao);
+        //t2 = (TextView) findViewById(R.id.thongbao);
         e1=(EditText) findViewById(R.id.nhapmatkhau);
         b1= (Button) findViewById(R.id.login);
         e1.setText(null);

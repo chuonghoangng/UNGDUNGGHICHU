@@ -251,10 +251,10 @@ public class MainActivity extends AppCompatActivity {
         EditText edt2 = (EditText) dialog.findViewById(R.id.editmatkhaumoi) ;
         if(nhan_chedo==0)
         {
-            txt1.setText("Cài đặt mật khẩu");
+            txt1.setText("Khóa Ứng Dụng");
             edt2.setVisibility(View.VISIBLE);
         }else{
-            txt1.setText("Hủy mật khẩu");
+            txt1.setText("Hủy khóa ứng dụng");
             edt2.setVisibility(View.INVISIBLE);
         }
 
