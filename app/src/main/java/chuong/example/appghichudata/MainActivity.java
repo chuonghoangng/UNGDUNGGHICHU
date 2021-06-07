@@ -36,7 +36,7 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
     //khai bao
-    //Button btnThemAnh;
+
     //khai bao cho dialog color
     TextView color;
     ImageButton img1,img2,img3,img4,img5,img6,img7,img8;
@@ -47,12 +47,12 @@ public class MainActivity extends AppCompatActivity {
     //khai báo danh sách
     ListView lvGhiChuAnh;
     //khai báo cho danh sách class
-    public ArrayList<GhiChuAnh> arrayGhiChuAnh;
+    public static ArrayList<GhiChuAnh> arrayGhiChuAnh;
     GhiChuAnhAdapter adapterAnh;
     int d;
     SharedPreferences luutrangthai;
-    TextView txttieude,txtnoidung;
-    //SearchView searchView;
+    //TextView txttieude,txtnoidung;
+
     public String nhan_mk;
     public int nhan_chedo;
 
@@ -64,16 +64,12 @@ public class MainActivity extends AppCompatActivity {
         //AnhXaAnh()
         constraintLayout=(ConstraintLayout) findViewById(R.id.menumanghinh);
         lvGhiChuAnh = (ListView) findViewById(R.id.listviewghichu2);
-        //txttieude = (TextView) findViewById(R.id.Tieude2);
-        //txtnoidung =(TextView) findViewById(R.id.noidung2);
-        //nhan_mk =getIntent().getStringExtra("Pass");
-        //nhan_chedo=getIntent().getIntExtra("chedomk",0);
+
+        // lấy mật khẩu và xem trạng thái khóa ứng dụng hay không
         nhan_mk=manghinhdangnhap.luuMK.getString("ma","");
         nhan_chedo = manghinhdangnhap.luuMK.getInt("Chedo",0);
 
-        //btnThemAnh= (Button) findViewById(R.id.buttonThemAnh);
-        //searchView=(SearchView) findViewById(R.id.search);
-        //
+        //xét màu nền của ứng dụng khi mở ứng dụng
         luutrangthai = getSharedPreferences("Trangthai",MODE_PRIVATE);
         // xử lí sự kiện thêm ảnh tren form moi
         d=luutrangthai.getInt("ma",0);
@@ -84,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
             constraintLayout.setBackgroundResource(R.drawable.maudo);
         }else if(d==2){
             constraintLayout.setBackgroundResource(R.drawable.maucam);
-            //holde.setTextColor(Color.BLACK);
+
         }else if(d==3){
             constraintLayout.setBackgroundResource(R.drawable.mauvang);
         }else if(d==4){
@@ -97,10 +93,8 @@ public class MainActivity extends AppCompatActivity {
             constraintLayout.setBackgroundColor(Color.WHITE);
         }
 
+        //tao Arraylist
 
-
-        //tao Arraylist Anh
-        //tao arraylist
         arrayGhiChuAnh = new ArrayList<>();
         //lien ket giua layout va class
         adapterAnh = new GhiChuAnhAdapter(this, R.layout.dong_ghi_chu_hinh_anh, arrayGhiChuAnh);
@@ -108,14 +102,12 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        // tao databaseUpdate 2
+        // tao database
         databaseUpdate = new Database(this, "ghichu2.sqlite", null, 1);
-        //tao bang cong viec cua ghi chu 2
+        //tao bang cong viec cua ghi chu
         databaseUpdate.QueryData("CREATE TABLE IF NOT EXISTS GhiChu2(Id INTEGER PRIMARY KEY AUTOINCREMENT,TieuDe VARCHAR(200),NoiDung VARCHAR(100000),Ngay VARCHAR(20),Hinhanh BLOB NULL)");
         //databaseUpdate.QueryData("DELETE FROM GhiChu2");
 
-        //insert database
-        //database.QueryData("INSERT INTO CongViec VALUES(null,'The thao','toan, ly, hoa','12/04/2013')");
 
         //xuat danh sach
         GetDataGhiChuAnh();
@@ -135,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+
     }
     private void luuTrangThai(){
         SharedPreferences.Editor editor = luutrangthai.edit();
@@ -237,8 +230,7 @@ public class MainActivity extends AppCompatActivity {
         else
         {
             DialogMaunen();
-            //constraintLayout.setBackgroundColor(Color.WHITE);
-            //constraintLayout.setBackgroundColor(Color.WHITE);
+
         }
         return super.onOptionsItemSelected(item);
     }
@@ -341,11 +333,12 @@ public class MainActivity extends AppCompatActivity {
         });
         dialog_xoa.show();
     }
+    //Cài đặt màu nền ứng dụng
     private  void DialogMaunen(){
         Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog_setting_color);
-        //Anh xa
+        //ánh xạ
 
         color = (TextView) dialog.findViewById(R.id.COLOR);
         img1 =(ImageButton) dialog.findViewById(R.id.imageButton1);
@@ -364,12 +357,12 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
+    // chọn màu nền
     private void ClickColor() {
         img1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //constraintLayout.setBackgroundColor(Color.RED);
+
                 constraintLayout.setBackgroundResource(R.drawable.maudo);
                 d=1;
                 luuTrangThai();
@@ -378,7 +371,7 @@ public class MainActivity extends AppCompatActivity {
         img2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //constraintLayout.setBackgroundColor(Color.);
+
                 constraintLayout.setBackgroundResource(R.drawable.maucam);
                 d=2;
                 luuTrangThai();
@@ -387,7 +380,7 @@ public class MainActivity extends AppCompatActivity {
         img3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //constraintLayout.setBackgroundColor(Color.YELLOW);
+
                 constraintLayout.setBackgroundResource(R.drawable.mauvang);
                 d=3;
                 luuTrangThai();

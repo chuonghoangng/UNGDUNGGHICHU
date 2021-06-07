@@ -18,12 +18,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BinaryOperator;
 
-public class GhiChuAnhAdapter extends BaseAdapter implements Filterable {
+public class GhiChuAnhAdapter extends BaseAdapter {
 
     private Context context;
     private int layout;
     public List<GhiChuAnh> ghiChuAnhList;
-    public List<GhiChuAnh> ghiChuAnhList_moi;
+    //public List<GhiChuAnh> ghiChuAnhList_moi;
 
 
 
@@ -31,7 +31,7 @@ public class GhiChuAnhAdapter extends BaseAdapter implements Filterable {
         this.context = context;
         this.layout = layout;
         this.ghiChuAnhList = ghiChuAnhList;
-        this.ghiChuAnhList_moi=ghiChuAnhList;
+        //this.ghiChuAnhList_moi=ghiChuAnhList;
     }
 
     @Override
@@ -49,37 +49,7 @@ public class GhiChuAnhAdapter extends BaseAdapter implements Filterable {
         return 0;
     }
 
-    @Override
-    public Filter getFilter() {
 
-        return new Filter() {
-            @Override
-            protected FilterResults performFiltering(CharSequence constraint) {
-                String x= constraint.toString();
-                if(x.isEmpty()){
-                    ghiChuAnhList_moi=ghiChuAnhList;
-                }else{
-                    List<GhiChuAnh> list =new ArrayList<>();
-                    for(GhiChuAnh note : ghiChuAnhList){
-                        if(note.getTieude().toLowerCase().contains(constraint.toString().toLowerCase())){
-                            list.add(note);
-                        }
-                    }
-                    ghiChuAnhList_moi=list;
-                }
-                FilterResults filterResults = new FilterResults();
-                filterResults.values=ghiChuAnhList_moi;
-                return filterResults;
-            }
-
-            @Override
-            protected void publishResults(CharSequence constraint, FilterResults results) {
-                //ghiChuAnhList_moi.clear();
-                ghiChuAnhList_moi= (List<GhiChuAnh>) results.values;
-                notifyDataSetChanged();
-            }
-        };
-    }
 
     private class  ViewHolder{
         TextView txtTieude,txtNoidung,txtNgaynhap;
